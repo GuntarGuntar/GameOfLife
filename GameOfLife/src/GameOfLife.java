@@ -1,6 +1,6 @@
 
 public class GameOfLife {
-	boolean[][] board;
+	private boolean[][] board;
 	int columns;
 	int rows;
 	int neighbours;
@@ -12,47 +12,37 @@ public class GameOfLife {
 			this.columns = columns;
 			this.rows = rows;
 		}
+		else 
+		{
+			throw new IllegalArgumentException();
+		}
 	}
 
-	public Object getColumns() {
+	public int getColumns() {
 		return columns;
 	}
 
-	public Object getRows() {
+	public int getRows() {
 		return rows;
 	}
 
-	public Object getNeighbourCount(int r, int c) {
+	public int getNeighbourCount(int r, int c) {
 		int count = 0;
-//		int i, j;
-//		for(i = r - 1; i <= r + 1; i++){
-//	        for(j = c - 1; j <= c + 1; j++){
-//	            if((i == r && j == c) || (i < 0 || j < 0) || (i >= rows || j >= columns)){
-//	                continue;
-//	            }
-//	            if(board [i][j] == true){
-//	                count++;
-//	                neighbours += count;
-//	            }
-//	        }
-//	    }
-		for (int i = 0; i <= r; i++) {
-			for (int j = 0; j <= c; j++) {
-				if (board[i][j] == true) 
-				{
-					count += 1;
-					neighbours += count;
+		for (int i = rows - 1; i <= rows + 1; i++) {
+			for (int j = columns - 1; j <= columns; j++) {
+				if (!(i == rows && j == columns)) {
+					if (board[i][j] = true) 
+					{
+						count++;
+					}
+					else 
+					{
+					}
 				}
-				else 
-				{
-					neighbours += count;
-				}
-
-
 			}
 		}
 		return count;
-	} 
+	}
 	
 	public boolean isAlive(int i, int j) {
 		boolean isAlive = false;
@@ -87,3 +77,4 @@ public class GameOfLife {
 	}
 
 }
+
